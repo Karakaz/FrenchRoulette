@@ -22,7 +22,7 @@ public class PlayerLoader {
 		return new Scanner(new File(path)).useDelimiter("\\A").next();
 	}
 
-	public List<Player> loadAllPlayers() {
+	public ArrayList<Player> loadAllPlayers() {
 		ArrayList<Player> playerList = new ArrayList<Player>();
 		
 		JSONArray arr = players.getJSONArray("players");
