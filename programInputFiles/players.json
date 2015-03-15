@@ -1,0 +1,35 @@
+{
+	"players": [
+         {
+         	"firstName": "Bob",
+         	"lastName": "Bobbersen",
+         	"strategy": "even",
+         	"bankroll": "500",
+         },
+         {
+         	"firstName": "Roger",
+         	"lastName": "Sterling",
+         	"strategy": "red",
+         	"bankroll": "5000",
+         },
+         {
+         	"firstName": "James",
+         	"lastName": "Bond",
+         	"strategy": "jamesBond",
+         	"bankroll": "5000",
+         },
+         {
+         	"firstName": "Julia",
+         	"lastName": "Roberts",
+         	"strategy": "number",
+         	"bettingNumber": "0",
+         	"bankroll": "10000",
+         },
+         {
+         	"firstName": "Neil",
+         	"lastName": "deGrasse Tyson",
+         	"strategy": "martingale",
+         	"bankroll": "1000",
+         },
+    ]
+}
