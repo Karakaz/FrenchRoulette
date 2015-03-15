@@ -29,7 +29,7 @@ public enum Strategy {
 		case red: return isRed(roll);
 		case black: return !isRed(roll);
 		case number: return roll == getBettingNumber();
-		case martingale: return isRed(roll);
+		case martingale: return roll % 2 == 1;
 		case jamesBond: return roll == 17;
 		default:
 			throw new RuntimeException("Unhandled strategy");

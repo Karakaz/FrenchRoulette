@@ -29,11 +29,13 @@ public class FrenchRouletteTest {
 	@Test
 	public void testPlayOneRound() {
 		roulette.play(1);
+		roulette.printStatistics();
 	}
 	
 	@Test
 	public void testPlay1000Rounds() {
 		roulette.play(1000);
+		roulette.printStatistics();
 	}
 
 }

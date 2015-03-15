@@ -11,7 +11,10 @@ public class Player {
 	
 	private int bankrollAtBeginning;
 	private int betAmount;
+	private int defaultBetAmount;
 	private int bankrollPeak;
+	private int bankrollPeakIndex;
+	private int rollIndex;
 	
 	public Player(JSONObject player) {
 		firstName = player.getString("firstName");
@@ -19,7 +22,14 @@ public class Player {
 		strategy = parseStrategy(player);
 		bankroll = player.getInt("bankroll");
 		bankrollPeak = bankrollAtBeginning = bankroll;
-		betAmount = 5;
+		betAmount = defaultBetAmount = 5;
+	}
+	
+	public Player(int betAmount, int bankroll){
+		this.betAmount = defaultBetAmount = betAmount;
+		strategy = Strategy.martingale;
+		this.bankroll = bankroll;
+		bankrollPeak = bankrollAtBeginning = bankroll;
 	}
 	
 	private Strategy parseStrategy(JSONObject player) {
@@ -32,6 +42,7 @@ public class Player {
 	}
 
 	public void handleRoll(int roll){
+		rollIndex++;
 		if(bankroll <= 0){
 			return;
 		} else if(betAmount > bankroll){
@@ -46,14 +57,31 @@ public class Player {
 		
 		if(strategy == Strategy.martingale){
 			if(strategy.didIWin(roll)){
-				betAmount = 5;
+				betAmount = defaultBetAmount;
 			} else{
 				betAmount *= 2;
 			}
 		}
 		if(bankrollPeak < bankroll){
 			bankrollPeak = bankroll;
+			bankrollPeakIndex = rollIndex;
 		}
+	}
+	
+	public int getBankrollPeak(){
+		return bankrollPeak;
+	}
+	
+	public int getBankrollPeakIndex(){
+		return bankrollPeakIndex;
+	}
+	
+	public int getInitialBankroll() {
+		return bankrollAtBeginning;
+	}
+	
+	public int getDefaultBetAmount(){
+		return defaultBetAmount;
 	}
 	
 	public void printStatistics(){
